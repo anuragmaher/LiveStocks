@@ -26,3 +26,6 @@ $ npm start
 
 $ npm run deploy 
 
+# Sample display 
+
+![Alt text](screen.png?raw=true "Title")
