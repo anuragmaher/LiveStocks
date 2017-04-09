@@ -20,3 +20,17 @@
 .red {
   background-color: red;
 }
+
+.page-header {
+    padding-bottom: 20px;
+    margin: 40px 0 20px;
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+}
+
+.cursurPointer{
+  cursor: pointer;
+}
