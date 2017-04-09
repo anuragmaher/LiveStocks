@@ -7,8 +7,11 @@
     "react-dom": "^15.5.3"
   },
   "devDependencies": {
+    "gh-pages": "^0.12.0",
     "react-scripts": "0.9.5"
   },
+  "homepage": "https://anuragmaher.github.io/LiveStocks",
+  "deploy" : "npm run build&&gh-pages -d build",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
