@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import StockList from './stock_list';
-const WS_URL = 'ws://stocks.mnet.website';
+const WS_URL = 'wss://stocks.mnet.website';
 
 import '../App.css';
 

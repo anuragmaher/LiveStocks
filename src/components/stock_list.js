@@ -21,12 +21,13 @@ const StockList = ({stocks}) => {
 
 	return (
 		<table className="table col-md-4">
-			<thead>
-				<th> Stock Name</th>
-				<th> Price</th>
-				<th> Last updated </th>
-			</thead>
-			<tbody>
+			<tbody>	
+				<tr>
+					<th> Stock Name</th>
+					<th> Price</th>
+					<th> Last updated </th>
+				</tr>
+			
 				{renderItems}
 			</tbody>
 		</table>
