@@ -60,7 +60,7 @@ class App extends Component {
                 <div className="col-md-4">
                     <StockList />
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-8">
                     <StockDetail />
                 </div>
             </div>
