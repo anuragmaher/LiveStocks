@@ -38,7 +38,7 @@ export default function(state = {}, action) {
 			        if(roundprice < stock.price) {
 			            newbg = REDBG;
 			        }
-        			chartinfo.push({price: price});
+        			chartinfo.push({price: roundprice});
 					temp[nameval] = {name: nameval, 
 									 price: roundprice, 
 									 bgClass: newbg,
