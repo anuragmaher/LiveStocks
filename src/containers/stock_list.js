@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import StockItem from '../components/stock_item'
 import _ from 'lodash';
 import { connect } from 'react-redux';
-import { selectStock } from '../actions/';
+import { selectStock } from '../actions/select_stock';
 import { bindActionCreators } from 'redux';
 
 // Function to render list of stock items
@@ -15,6 +15,7 @@ class StockList extends Component  {
 		/**
 		* This means our stocks data is empty 
 		*/
+		
 		if(!_.size(this.props.stocks)) {
 			return <tr><td> Connecting to Websocket ... </td></tr>;
 		}

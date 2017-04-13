@@ -1,4 +1,4 @@
-import {STOCK_SELECTED} from '../actions';
+import {STOCK_SELECTED} from '../actions/select_stock';
 
 // State argument is not application state, only the state 
 // this reducer is responsible for

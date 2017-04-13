@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import updateStockData from '../actions/update_stock_data';
 import StockDetail from './stock_detail';
 import './app.css';
+import { selectStock } from '../actions/select_stock';
 
 class App extends Component {
 
@@ -15,10 +16,25 @@ class App extends Component {
     * selectedStock is the stock which is selected for more details
     * @params are the props of the Component
     */
-    constructor(props) {
-        super(props);
+    constructor(props, context) {
+        super(props, context);
     
         this.onWebSocketMessage = this.onWebSocketMessage.bind(this);
+    }
+
+    updateSelectedStock(data) {
+        var state = this.context.store.getState();
+        if(!state.activeStock) {
+            const name = Object.keys(state.stocks)[0];
+            const stock = state.stocks[name];
+            this.props.selectStock(stock);
+            return;
+        }
+        data.forEach(([name, price]) => {
+            if(state.activeStock.name === name) {
+                this.props.selectStock(state.stocks[name]);
+            }
+        });
     }
 
     /**
@@ -28,6 +44,7 @@ class App extends Component {
     onWebSocketMessage(data){
         const result = JSON.parse(data);
         this.props.updateStockData(result);
+        this.updateSelectedStock(result);
     }
 
     /**
@@ -69,9 +86,14 @@ class App extends Component {
 
 }
 
+App.contextTypes = {
+  store: React.PropTypes.object.isRequired
+};
+
+
 // Here we are mapping the update Socket data dispatch to the reducer 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({updateStockData: updateStockData}, dispatch)
+    return bindActionCreators({updateStockData: updateStockData, selectStock: selectStock}, dispatch)
 }
 
 // Connecting the Component to the Reducer object 
