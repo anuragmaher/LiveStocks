@@ -13,7 +13,7 @@ class StockDetail extends Component {
         * This means none of the stock is selected
         */
         if(!stock){
-            return <div> Click on the Ticker to view chart details </div>;
+            return <div>  </div>;
         }
 
         /**

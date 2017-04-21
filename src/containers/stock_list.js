@@ -4,6 +4,7 @@ import _ from 'lodash';
 import { connect } from 'react-redux';
 import { selectStock } from '../actions/select_stock';
 import { bindActionCreators } from 'redux';
+var Spinner = require('react-spinkit');
 
 // Function to render list of stock items
 class StockList extends Component  {
@@ -17,19 +18,16 @@ class StockList extends Component  {
 		*/
 		
 		if(!_.size(this.props.stocks)) {
-			return <tr><td> Connecting to Websocket ... </td></tr>;
+			return <Spinner spinnerName="double-bounce" className="spinnerAlign"/>;
 		}
 
-		return Object.keys(this.props.stocks).map((key) => {
+		const stockitems = Object.keys(this.props.stocks).map((key) => {
 			const stock = this.props.stocks[key];
 			return <StockItem 
 						stock={stock} 
 						key={stock.name} 
 						selectStock={this.props.selectStock} />
 		});
-	}
-
-	render() {
 		return (
 			<table className="table col-md-4 table-hover table-condensed">
 				<tbody>	
@@ -39,10 +37,14 @@ class StockList extends Component  {
 						<th> Last updated </th>
 					</tr>
 				
-					{this.renderStocks()}
+					{stockitems}
 				</tbody>
 			</table>
-		);		
+		);
+	}
+
+	render() {
+		return this.renderStocks();
 	}
 
 }

@@ -12,8 +12,6 @@ class App extends Component {
 
     /**
     * Creates a state object in the form of 
-    * { name : { name, price, lastupdated, bgClass, chartInfo} }
-    * selectedStock is the stock which is selected for more details
     * @params are the props of the Component
     */
     constructor(props, context) {
@@ -22,6 +20,9 @@ class App extends Component {
         this.onWebSocketMessage = this.onWebSocketMessage.bind(this);
     }
 
+    /** 
+    * Based on latest webscocket data we update the selectedSlock value
+    */
     updateSelectedStock(data) {
         var state = this.context.store.getState();
         if(!state.activeStock) {
